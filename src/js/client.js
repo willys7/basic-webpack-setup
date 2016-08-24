@@ -1,79 +1,152 @@
-// import React from "react";
-// import ReactDOM from "react-dom";
+// let a = x => x*x;
+// console.log(a(9));
 
-// import Layout from "./components/Layout";
-
-// const app = document.getElementById('app');
-// ReactDOM.render(<Layout/>, app);
-
-// import { createStore } from "redux";
-
-
-
-// const counter = (state = 0, action) => {
-//   switch (action.type) {
-//     case 'INCREMENT':
-//       return state + 1;
-//     case 'DECREMENT':
-//       return state - 1;
-//     default:
-//       return state;
-//   }
+// var pares =[2, 4, 6];
+// var impares = pares.map(function(v){
+// 	return v + 1;
+// });
+// const sq = (x) =>{
+// 	return x*x;
 // }
 
-// const store = createStore(counter);
+// let impares = pares.map(v => v+1)
+// let cuadrados = pares.map(sq)
 
-// console.log("Samuel");
+// console.log(impares);
+// console.log(cuadrados);
 
-// console.log(store.getState());
+// let params = [1,2,3];
+// let b = [4,5, ...params];
 
-// store.dispatch({
-//   type: 'INCREMENT'
-// });
+// const x = (a,b,c) => a+b+c;
+// console.log(x(...params));
 
-// console.log(store.getState());
+// let a = 5;
+// let b = 6;
+// let c = 7;
 
-// store.dispatch({
-//   type: 'INCREMENT'
-// });
+// let o = {a, b, c};
+// console.log(o);
 
-// console.log(store.getState());
+// let nombre = "William";
+// let momento = "mañana";
 
-// store.dispatch({
-//   type: 'INCREMENT'
-// });
 
-// console.log(store.getState());
+// let datos = {
+// 	nombre: "William",
+// 	momento: "dia"
+// }
+// let saludo  = `Hola ${datos.nombre}, que pase feliz ${datos.momento}!`
+// console.log(saludo); 
 
-// store.dispatch({
-//   type: 'INCREMENT'
-// });
+// var objeto = {
+// 	nombre: "William"
+// 	saludar(){
+// 		console.log("hola");
+// 	}
+// };
 
-// console.log(store.getState());
+// objeto.saludar();
 
-// store.dispatch({
-//   type: 'DECREMENT'
-// });
+// let miHermosoPuntoParaElEjemploDeHoy = {
+// 	x:0.0,
+// 	y:100.0
+// }
 
-// console.log(store.getState());
+// let {x, y} = miHermosoPuntoParaElEjemploDeHoy
+// // console.log(miHermosoPuntoParaElEjemploDeHoy.x);
+// console.log(y);
 
-// store.dispatch({
-//   type: 'DECREMENT'
-// });
+// function hola({a, b, c}){
+// 	return a + b + c;
+// }
 
-// console.log(store.getState());
+// console.log(hola({a:1 , b:2 , c:3}));
 
-function* xrange({start = 0, end, step = 1}) {
-  while(start < end){
-    yield start;
-    start += step;
-  }
+// function* miGenerador(){
+// 	yield 6;
+// 	yield 3;
+// 	yield 90;
+// 	yield -100;
+// }
+
+// let generador = miGenerador();
+
+// let resultado = [miGenerador()];
+
+// console.log(generador.next());
+
+/*
+
+
+State: int representing actual value
+
+Actions:
+{
+	type: 'INCREMENT'
+}
+{
+	type: 'DECREMENT'
 }
 
-let params = [1, 2, 3];
-let other = [4, 5, ...params];
-console.log(other);
+Test:
+state = 0
+counter(0,{type: 'INCREMENT'}) --> 1
+counter(1,{type: 'INCREMENT'}) --> 0
+
+// */
+// import expect from "expect"
+
+// //Reducer
+// const counter = (state = 0, action) =>{
+// 	switch (action.type){
+// 		case 'INCREMENT':
+// 			return state + 1;
+// 		case 'DECREMENT':
+// 			return state - 1;
+// 		default:
+// 			return state;
+
+// 	}
+// }
+
+// expect(
+// 	counter(undefined, {})
+// ).toEqual(0);
+
+// expect(
+// 	counter(0,{type:'INCREMENT'})
+// ).toEqual(1);
+
+// expect(
+// 	counter(1,{type:'DECREMENT'})
+// ).toEqual(0);
+
+// console.log("All tests passed!")
 
 
-let numbers = [ ...xrange({end: 100}) ];
-console.log(numbers);
+import ReactDOM from 'react-dom';
+import Immutable from 'Immutable';
+
+const Counter = ({value, incrementAction, decrementAction, removeAction}) => (
+	<div>
+		<h1>{value} </h1>
+		<button onClick
+		<button onClick ={incrementAction}>+</button>
+		<button onClick ={decrementAction}>-</button>
+		<button onClick ={removeAction}>&times;</button>
+	</div>
+	);
+
+const render = ()=>{
+	ReactDOM.render(
+		<Counter
+			value={999}
+			incrementAction = {()=> {alert("hooola incremento")}}
+			incrementAction = {()=> {alert("hooola decremeto")}}
+			removeAction = {()=> {alert("hooola borrar")}} />,
+			document.getElementById('root')
+		);
+}
+
+render();
